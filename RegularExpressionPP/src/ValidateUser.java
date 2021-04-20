@@ -7,7 +7,7 @@ public class ValidateUser {
 		
 		Scanner sc = new Scanner(System.in);
 		String regex = "^[A-Z][a-z][a-z]+$";
-		
+	
 		System.out.println("Enter Your First_name: ");
 		String fname = sc.nextLine();
 		Pattern pat = Pattern.compile(regex);
@@ -25,5 +25,19 @@ public class ValidateUser {
 			System.out.println("Valid LastName");
 		else
 			System.out.println("Invalid LastName");
+		
+		System.out.println("Enter Your Email: ");
+		String email = sc.nextLine();
+		validateEmail(email);
+		
+	}
+	
+	public static void validateEmail(String email) {
+		 String regex = "^[a-zA-Z0-9_.]+@[a-zA-Z0-9.-]+$";
+		Pattern pat = Pattern.compile(regex);
+		if(pat.matcher(email).matches())
+			System.out.println("Valid Email");
+		else
+			System.out.println("Invalid Email");
 	}
 }
