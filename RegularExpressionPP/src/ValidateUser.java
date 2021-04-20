@@ -8,13 +8,22 @@ public class ValidateUser {
 		Scanner sc = new Scanner(System.in);
 		String regex = "^[A-Z][a-z][a-z]+$";
 		
-		System.out.println("Enter Your name: ");
+		System.out.println("Enter Your First_name: ");
 		String fname = sc.nextLine();
 		Pattern pat = Pattern.compile(regex);
 		
 		if(pat.matcher(fname).matches())
-			System.out.println("Name is Valid");
+			System.out.println("Valid FirstName");
 		else
-			System.out.println("Name is Invalid");
+			System.out.println("Invalid FirstName");
+		
+		System.out.println("Enter Your Last_name: ");
+		String lname = sc.nextLine();
+		pat = Pattern.compile(regex);
+		
+		if(pat.matcher(lname).matches())
+			System.out.println("Valid LastName");
+		else
+			System.out.println("Invalid LastName");
 	}
 }
