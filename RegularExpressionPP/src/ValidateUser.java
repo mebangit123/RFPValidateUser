@@ -33,7 +33,7 @@ public class ValidateUser {
 	}
 	
 	public static void validateEmail(String email) {
-		 String regex = "^[a-zA-Z0-9_.]+@[a-zA-Z0-9.-]+$";
+		 String regex = "^[a-zA-Z0-9_.]+@[a-zA-Z0-9.]+$";
 		Pattern pat = Pattern.compile(regex);
 		if(pat.matcher(email).matches())
 			System.out.println("Valid Email");
