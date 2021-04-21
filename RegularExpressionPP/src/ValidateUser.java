@@ -1,4 +1,5 @@
 import java.util.Scanner;
+import java.util.regex.Matcher;
 import java.util.regex.Pattern;
 
 public class ValidateUser {
@@ -6,38 +7,86 @@ public class ValidateUser {
 		System.out.println("Welcome User Registration Validation Program");
 		
 		Scanner sc = new Scanner(System.in);
-		String regex = "^[A-Z][a-z][a-z]+$";
+		//String regex = "^[A-Z][a-z][a-z]+$";
 	
 		System.out.println("Enter Your First_name: ");
 		String fname = sc.nextLine();
-		Pattern pat = Pattern.compile(regex);
-		
-		if(pat.matcher(fname).matches())
-			System.out.println("Valid FirstName");
-		else
-			System.out.println("Invalid FirstName");
-		
 		System.out.println("Enter Your Last_name: ");
 		String lname = sc.nextLine();
-		pat = Pattern.compile(regex);
-		
-		if(pat.matcher(lname).matches())
-			System.out.println("Valid LastName");
-		else
-			System.out.println("Invalid LastName");
-		
 		System.out.println("Enter Your Email: ");
 		String email = sc.nextLine();
-		validateEmail(email);
+		System.out.println("Enter Your PhoneNo: ");
+		String phoneNo = sc.next();
 		
+		User user = new User(fname, lname,email,phoneNo);
+		
+		System.out.println(validateUser(user));
 	}
 	
-	public static void validateEmail(String email) {
-		 String regex = "^[a-zA-Z0-9_.]+@[a-zA-Z0-9.]+$";
-		Pattern pat = Pattern.compile(regex);
-		if(pat.matcher(email).matches())
-			System.out.println("Valid Email");
-		else
-			System.out.println("Invalid Email");
+	public static boolean validateUser(User user) {
+		
+		boolean valid = false;
+		String fnameRegex = "^[A-Z][a-z][a-z]+$";
+		String lnameRegex = "^[A-Z][a-z][a-z]+$";
+		String emailRegex = "^[0-9a-zA-Z]+([._-][0-9a-zA-Z])*@[0-9a-zA-Z]+.[a-zA-Z]{2,4}([.][a-zA-Z]{2})*$";
+		String phoneRegex = "^[0-9]{2}[\\s][1-9][0-9]{9}$";
+		
+		Pattern pat = Pattern.compile(fnameRegex);
+		Matcher m = pat.matcher(user.getFname());
+		
+		pat = Pattern.compile(lnameRegex);
+		Matcher m1 = pat.matcher(user.getLname());
+		
+		pat = Pattern.compile(phoneRegex);
+		Matcher m3 = pat.matcher(user.getPhoneNo());
+		
+		pat = Pattern.compile(emailRegex);
+		Matcher m2 = pat.matcher(user.getEmail());
+		
+		if(m.matches() | m1.matches() | m2.matches() | m3.matches() == valid ) {
+		valid = true;	
+		}
+	return valid;
+			
 	}
+}
+
+class User {
+	private String fname;
+	private String lname;
+	private String email;
+	String phoneNo;
+	
+	public User(String fname, String lname, String email, String phoneNo) {
+		this.fname = fname;
+		this.lname = lname;
+		this.email = email;
+		this.phoneNo = phoneNo;
+	}
+	
+	public String getPhoneNo() {
+		return phoneNo;
+	}
+	public void setPhoneNo(String phoneNo) {
+		this.phoneNo = phoneNo;
+	}
+	public String getFname() {
+		return fname;
+	}
+	public void setFname(String fname) {
+		this.fname = fname;
+	}
+	public String getLname() {
+		return lname;
+	}
+	public void setLname(String lname) {
+		this.lname = lname;
+	}
+	public String getEmail() {
+		return email;
+	}
+	public void setEmail(String email) {
+		this.email = email;
+	}
+	
 }
