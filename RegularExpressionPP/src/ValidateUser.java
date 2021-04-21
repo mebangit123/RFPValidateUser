@@ -7,7 +7,6 @@ public class ValidateUser {
 		System.out.println("Welcome User Registration Validation Program");
 		
 		Scanner sc = new Scanner(System.in);
-		//String regex = "^[A-Z][a-z][a-z]+$";
 	
 		System.out.println("Enter Your First_name: ");
 		String fname = sc.nextLine();
