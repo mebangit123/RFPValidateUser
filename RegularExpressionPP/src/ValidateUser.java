@@ -33,7 +33,7 @@ public class ValidateUser {
 		String lnameRegex = "^[A-Z][a-z][a-z]+$";
 		String emailRegex = "^[0-9a-zA-Z]+([._-][0-9a-zA-Z])*@[0-9a-zA-Z]+.[a-zA-Z]{2,4}([.][a-zA-Z]{2})*$";
 		String phoneRegex = "^[0-9]{2}[\\s][1-9][0-9]{9}$";
-		String passRegex = "^([a-z]+[A-Z]{1,}){8,}$";
+		String passRegex = "^([0-9a-z]+{1,}[A-Z]{1,}){8,}$";
 		
 		Pattern pat = Pattern.compile(fnameRegex);
 		Matcher m = pat.matcher(user.getFname());
